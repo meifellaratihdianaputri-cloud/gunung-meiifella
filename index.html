@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gunung Favorit di Indonesia</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to bottom right, #2b5876, #4e4376);
+        color: white;
+        min-height: 100vh;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        text-shadow: 0 0 5px black;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+        transition: 0.3s;
+        cursor: pointer;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+    .card:hover {
+        transform: scale(1.06);
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        font-weight: 600;
+    }
+
+    /* Pop-up Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.7);
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .modal-content {
+        background: #ffffff;
+        color: black;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        width: 100%;
+        position: relative;
+        animation: muncul 0.3s ease;
+    }
+
+    @keyframes muncul {
+        from { transform: scale(0.6); opacity: 0; }
+        to   { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 25px;
+        cursor: pointer;
+        color: #333;
+    }
+
+    img.panorama {
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Gunung Favorit di Indonesia</h1>
+
+<div class="container">
+    <div class="card" onclick="showModal('rinjani')">
+        <h2>Gunung Rinjani</h2>
+        <p>Lombok, Nusa Tenggara Barat</p>
+    </div>
+
+    <div class="card" onclick="showModal('bromo')">
+        <h2>Gunung Bromo</h2>
+        <p>Jawa Timur</p>
+    </div>
+
+    <div class="card" onclick="showModal('semeru')">
+        <h2>Gunung Semeru</h2>
+        <p>Jawa Timur</p>
+    </div>
+
+    <div class="card" onclick="showModal('merbabu')">
+        <h2>Gunung Merbabu</h2>
+        <p>Jawa Tengah</p>
+    </div>
+</div>
+
+<!-- MODAL: RINJANI -->
+<div class="modal" id="rinjani">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('rinjani')">&times;</span>
+        <h2>Gunung Rinjani</h2>
+        <p>• Ketinggian: 3.726 mdpl<br>
+           • Lokasi: Lombok, NTB<br>
+           • Daya tarik: Danau Segara Anak, sunrise, dan jalur pendakian yang menantang.</p>
+        <img class="panorama" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Segara_Anak_Rinjani.jpg" alt="Rinjani Panorama">
+    </div>
+</div>
+
+<!-- MODAL: BROMO -->
+<div class="modal" id="bromo">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('bromo')">&times;</span>
+        <h2>Gunung Bromo</h2>
+        <p>• Ketinggian: 2.329 mdpl<br>
+           • Lokasi: Jawa Timur<br>
+           • Daya tarik: Lautan pasir, golden sunrise, dan kawah besar.</p>
+        <img class="panorama" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Mount_Bromo_in_East_Java_%28Indonesia%29.jpg" alt="Bromo Panorama">
+    </div>
+</div>
+
+<!-- MODAL: SEMERU -->
+<div class="modal" id="semeru">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('semeru')">&times;</span>
+        <h2>Gunung Semeru</h2>
+        <p>• Ketinggian: 3.676 mdpl<br>
+           • Lokasi: Jawa Timur<br>
+           • Daya tarik: Puncak Mahameru, semburan asap, dan Danau Ranu Kumbolo.</p>
+        <img class="panorama" src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Mahameru.jpg" alt="Semeru Panorama">
+    </div>
+</div>
+
+<!-- MODAL: MERBABU -->
+<div class="modal" id="merbabu">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('merbabu')">&times;</span>
+        <h2>Gunung Merbabu</h2>
+        <p>• Ketinggian: 3.145 mdpl<br>
+           • Lokasi: Jawa Tengah<br>
+           • Daya tarik: Sabana luas, pemandangan sunrise dari puncak Triangulasi.</p>
+        <img class="panorama" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Merbabu.jpg" alt="Merbabu Panorama">
+    </div>
+</div>
+
+<script>
+function showModal(id) {
+    document.getElementById(id).style.display = "flex";
+}
+
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+// Tutup modal jika klik area gelap
+window.onclick = function(e) {
+    document.querySelectorAll(".modal").forEach(modal => {
+        if (e.target === modal) modal.style.display = "none";
+    });
+};
+</script>
+
+</body>
+</html>
